@@ -208,3 +208,24 @@ secondGameContainer.appendChild(secondGameElement);
 
 console.log("Top Game:", topGame.name);
 console.log("Second Game:", runnerUp.name);
+
+// Select the search bar and games-container
+const searchBar = document.getElementById("search-bar");
+
+// Function to filter games based on the search query
+function searchGames() {
+    // Get the search query from the input field
+    const searchQuery = searchBar.value.toLowerCase();
+
+    // Filter the games based on the search query
+    const filteredGames = GAMES_JSON.filter(game => game.name.toLowerCase().includes(searchQuery));
+
+    // Clear the games container
+    deleteChildElements(gamesContainer);
+
+    // Add the filtered games to the games container
+    addGamesToPage(filteredGames);
+}
+
+// Add an event listener to the search bar to call the searchGames function
+searchBar.addEventListener("input", searchGames);
