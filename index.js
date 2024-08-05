@@ -155,7 +155,7 @@ const descriptionContainer = document.getElementById("description-container");
 const unfundedGamesCount = GAMES_JSON.filter(game => game.pledged < game.goal).length;
 
 // create a string that explains the number of unfunded games using the ternary operator
-const unfundedGamesText = `A total of $${totalRaised.toLocaleString()} has been raised for ${totalGames} game${totalGames !== 1 ? 's' : ''}. Currently, ${unfundedGamesCount} game${unfundedGamesCount !== 1 ? 's' : ''} remain${unfundedGamesCount === 1 ? 's' : ''} unfunded. We need your help to fund these amazing games!`;
+const unfundedGamesText = `A total of $${totalPledged.toLocaleString()} has been raised for ${totalGames} game${totalGames !== 1 ? 's' : ''}. Currently, ${unfundedGamesCount} game${unfundedGamesCount !== 1 ? 's' : ''} remain${unfundedGamesCount === 1 ? 's' : ''} unfunded. We need your help to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
 const unfundedGamesParagraph = document.createElement("p");
@@ -188,7 +188,7 @@ if (!sortedGames || sortedGames.length === 0) {
 const [topGame, runnerUp, ...rest] = sortedGames;
 
 // Check if top games are defined
-if (!topGame || !secondGame) {
+if (!topGame || !runnerUp) {
     console.error("Top games are not defined.");
 } else {
     // Log the names of the top two games to verify
@@ -205,3 +205,6 @@ const secondGameElement = document.createElement("p");
 secondGameElement.textContent = `Runner Up: ${runnerUp.name}`;
 secondGameContainer.appendChild(secondGameElement);
 }
+
+console.log("Top Game:", topGame.name);
+console.log("Second Game:", runnerUp.name);
